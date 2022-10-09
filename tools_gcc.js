@@ -112,6 +112,24 @@ function compileGCC(SOURCES, CFLAGS, INCLUDES, DPARAMS, PREFIX_OUTPUT)
     return 0;
 }
 
+function compileGCC_Debug(SOURCES, CFLAGS, INCLUDES, DPARAMS, PREFIX_OUTPUT)
+{
+    for (var i=0; i<SOURCES.length; i++) {
+        var SOURCE = SOURCES[i];
+        var OUTPUT;
+        if (PREFIX_OUTPUT !== undefined) {
+            OUTPUT = TARGET_PATH_DIR + "/" + PREFIX_OUTPUT + "_" + Path.getFilename(SOURCE).replace(".cpp",".o").replace(".cc",".o").replace(".c",".o");
+        } else {
+            OUTPUT = TARGET_PATH_DIR + "/" + Path.getFilename(SOURCE).replace(".cpp",".o").replace(".cc",".o").replace(".c",".o");
+        }
+        var tmp = arrayToStringD([CC, "-c", SOURCE, "-o", OUTPUT, CFLAGS, INCLUDES, DPARAMS]);
+        var res = Processor.run(tmp);
+        if (res < 0) return res;
+    }
+    return 0;
+}
+
+
 function DLL2Library(dll_filename)
 {
     // step 1
