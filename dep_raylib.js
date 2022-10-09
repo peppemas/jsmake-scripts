@@ -1,3 +1,4 @@
+// [X] Windows [X] Linux [X] OSX [] Android [] UWP [] WEB
 function raylib() {
     Log.info("### Compile RAYLIB");
 
@@ -8,18 +9,27 @@ function raylib() {
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
+    var CUSTOM_CFLAGS = "-fno-strict-aliasing -O3 -DNDEBUG -std=c99"
     var DPARAMS = [
         "-D",PLATFORM,
+        "-D","UNICODE",
+        "-D","WINVER=0x0501",
+        "-D","_CRT_SECURE_NO_WARNINGS",
+        "-D","PLATFORM_DESKTOP"
     ];
     var INCLUDES = [
-        "-I",INSTALL_LIB_DIR + "/src",
+        "-I",INSTALL_LIB_DIR + "/glfw/include",
+        "-I",DIR + "/src",
+        "-I",DIR + "/src/external"
     ];
-    var SOURCES = [];
+
+
+    var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".c", false, false);
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
     AMALGAMATED_INCLUDES.push(INCLUDES);
     if (AMALGAMATED_INCLUDES_ONLY) return 0;
 
-    return 0;
+    return compileGCC_Debug(SOURCES, CUSTOM_CFLAGS, arrayToString(INCLUDES), arrayToString(DPARAMS), "raylib");
 }
