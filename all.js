@@ -36,3 +36,4 @@ Js.include("./jsmake-scripts/dep_lohmann_json.js");
 Js.include("./jsmake-scripts/dep_tinygltf.js");
 Js.include("./jsmake-scripts/dep_minimp3.js");
 Js.include("./jsmake-scripts/dep_vst3sdk.js");
+Js.include("./jsmake-scripts/dep_raylib.js");
