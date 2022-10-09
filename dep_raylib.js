@@ -12,7 +12,7 @@ function raylib() {
         "-D",PLATFORM,
     ];
     var INCLUDES = [
-        "-I",INSTALL_LIB_DIR + "/include",
+        "-I",INSTALL_LIB_DIR + "/src",
     ];
     var SOURCES = [];
 
