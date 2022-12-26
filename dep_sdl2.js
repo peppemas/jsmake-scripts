@@ -4,7 +4,7 @@ function sdl2()
     Log.warn("### Compile SDL2");
 
     var GITHUB_URL = "https://github.com/libsdl-org/SDL.git";
-    var VERSION = "2.0.22";
+    var VERSION = "release-2.26.1";
 
     var DIR = INSTALL_LIB_DIR + "/sdl2";
 
@@ -121,9 +121,11 @@ function sdl2()
         SOURCE_LOADSO_DRV
     );
 
+/*
     var GLAD_SOURCES = Directory.collectFilesWithExt(LIBS_PLATFORM_PATH + "/glad/src", ".c", false, false);
     var VICTRIX_WINDOWIMPL = Directory.collectFilesContainingString(VX_SOURCE_CORE_PATH, "SDL", ".cpp", true, false);
     SOURCES = SOURCES.concat(GLAD_SOURCES, VICTRIX_WINDOWIMPL);
+*/
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
