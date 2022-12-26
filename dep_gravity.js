@@ -12,19 +12,20 @@ function gravity()
 
     var DPARAMS =
         [
-            "-D",PLATFORM,
-            "-D","NDEBUG",
-            "-D","USING_GENERATED_CONFIG_H",
-            "-D","_MBCS",
-            "-D","ENABLE_OPENGL"
+            "-D",PLATFORM
         ];
 
     // common for all platforms
-    var SOURCES = Directory.collectFilesWithExt(DIR+"/src",".c",false,false);
+    var SOURCES = Directory.collectFilesWithExt(DIR+"/src", ".c", true, false);
 
-    var INCLUDES = arrayToString([
+    var INCLUDES = [
         "-I",DIR+"/src",
-    ]);
+        "-I",DIR+"/src/runtime",
+        "-I",DIR+"/src/shared",
+        "-I",DIR+"/src/utils",
+        "-I",DIR+"/src/optionals",
+        "-I",DIR+"/src/compiler",
+    ];
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
@@ -32,5 +33,5 @@ function gravity()
 
     if (AMALGAMATED_INCLUDES_ONLY) return 0;
 
-    return compileGCC(SOURCES, CFLAGS, INCLUDES, arrayToString(DPARAMS));
+    return compileGCC(SOURCES, CFLAGS, arrayToString(INCLUDES), arrayToString(DPARAMS), "gravity");
 }
