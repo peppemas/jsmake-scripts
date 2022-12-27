@@ -25,5 +25,5 @@ function imgui()
     AMALGAMATED_DPARAMS.push(DPARAMS);
     AMALGAMATED_INCLUDES.push(INCLUDES);
 
-    return compileLibrary("libimgui.a", SOURCES, CFLAGS, INCLUDES, DPARAMS);
+    return compileGCC(SOURCES, CFLAGS, INCLUDES, arrayToString(DPARAMS), "IMGUI");
 }
