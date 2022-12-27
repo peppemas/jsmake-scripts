@@ -3,7 +3,7 @@ function imgui()
     Log.info("### Compile IMGUI");
 
     var GITHUB_URL = "https://github.com/ocornut/imgui.git";
-    var VERSION = "v1.87";
+    var VERSION = "v1.89.1";
 
     var DIR = INSTALL_LIB_DIR + "/imgui";
 
