@@ -1,6 +1,6 @@
 function imgui()
 {
-    Log.info("### Compile IMGUI");
+    Log.warn("### Compile IMGUI");
 
     var GITHUB_URL = "https://github.com/ocornut/imgui.git";
     var VERSION = "v1.89.1";
@@ -14,16 +14,18 @@ function imgui()
         DIR + "/imgui_draw.cpp",
         DIR + "/imgui_widgets.cpp",
     ];
-    var INCLUDES = arrayToString([
+    var INCLUDES = [
         "-I",DIR,
-    ]);
-    var DPARAMS = arrayToString([
+    ];
+    var DPARAMS = [
         "-D",PLATFORM,
-    ]);
+    ];
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
     AMALGAMATED_INCLUDES.push(INCLUDES);
 
-    return compileGCC(SOURCES, CFLAGS, INCLUDES, arrayToString(DPARAMS), "IMGUI");
+    if (AMALGAMATED_INCLUDES_ONLY) return 0;
+
+    return compileGCC(SOURCES, CFLAGS, arrayToString(INCLUDES), arrayToString(DPARAMS), "IMGUI");
 }
