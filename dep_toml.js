@@ -1,8 +1,8 @@
 function toml() {
     Log.info("### Compile TOML++ (Header Only)");
 
-    var GITHUB_URL = "https://github.com/marzer/tomlplusplus.git";
-    var VERSION = "v2.3.0";
+    var GITHUB_URL = "https://github.com/ToruNiina/toml11.git";
+    var VERSION = "v3.7.1";
 
     var DIR = INSTALL_LIB_DIR + "/toml";
 
@@ -12,7 +12,7 @@ function toml() {
         "-D",PLATFORM,
     ];
     var INCLUDES = [
-        "-I",INSTALL_LIB_DIR + "/include",
+        "-I",INSTALL_LIB_DIR,
     ];
     var SOURCES = [];
 
