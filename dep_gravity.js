@@ -17,6 +17,7 @@ function gravity()
 
     // common for all platforms
     var SOURCES = Directory.collectFilesWithExt(DIR+"/src", ".c", true, false);
+    SOURCES = removeItemContainingString(SOURCES,"gravity"); // remove the CLI exec
 
     var INCLUDES = [
         "-I",DIR+"/src",

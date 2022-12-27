@@ -14,14 +14,13 @@ function sdl2()
         [
             "-D",PLATFORM,
             "-D","NDEBUG",
-            //"-D","USING_GENERATED_CONFIG_H",
             "-D","_MBCS",
-            "-D","ENABLE_OPENGL",
             "-D","HAVE_SHELLSCALINGAPI_H"
         ];
 
     // common for all platforms
     var SOURCES = Directory.collectFilesWithExt(DIR+"/src",".c",false,false);
+
     var SOURCES_ATOMIC = Directory.collectFilesWithExt(DIR+"/src/atomic",".c",false,false);
     var SOURCES_AUDIO = Directory.collectFilesWithExt(DIR+"/src/audio",".c",false,false);
     var SOURCES_CPU = Directory.collectFilesWithExt(DIR+"/src/cpuinfo",".c",false,false);
@@ -32,6 +31,7 @@ function sdl2()
     var SOURCES_HAPTIC = Directory.collectFilesWithExt(DIR+"/src/haptic",".c",false,false);
     var SOURCES_HIDAPI = Directory.collectFilesWithExt(DIR+"/src/hidapi",".c",false,false);
     var SOURCES_JOYSTICK = Directory.collectFilesWithExt(DIR+"/src/joystick",".c",false,false);
+    var SOURCES_JOYSTICK_VIRTUAL = Directory.collectFilesWithExt(DIR+"/src/joystick/virtual",".c",false,false);
     var SOURCES_LIBM = Directory.collectFilesWithExt(DIR+"/src/libm",".c",false,false);
     var SOURCES_POWER = Directory.collectFilesWithExt(DIR+"/src/power",".c",false,false);
     var SOURCES_RENDER = Directory.collectFilesWithExt(DIR+"/src/render",".c",false,false);
@@ -41,6 +41,8 @@ function sdl2()
     var SOURCES_TIMER = Directory.collectFilesWithExt(DIR+"/src/timer",".c",false,false);
     var SOURCES_VIDEO = Directory.collectFilesWithExt(DIR+"/src/video",".c",false,false);
     var SOURCES_VIDEO_YUV2RGB = Directory.collectFilesWithExt(DIR+"/src/video/yuv2rgb",".c",false,false);
+    var SOURCES_MISC = Directory.collectFilesWithExt(DIR+"/src/misc",".c",false,false);
+    var SOURCES_LOCALE = Directory.collectFilesWithExt(DIR+"/src/locale",".c",false,false);
 
     switch (TARGET_PLATFORM) {
         case T_TARGET_PLATFORM.WINDOWS:
@@ -62,16 +64,22 @@ function sdl2()
             SOURCES_RENDER_DRV = SOURCES_RENDER_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/render/direct3d12",".c",false,false));
             SOURCES_RENDER_DRV = SOURCES_RENDER_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/render/opengl",".c",false,false));
             SOURCES_RENDER_DRV = SOURCES_RENDER_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/render/software",".c",false,false));
-            var SOURCES_SENSOR_DRV = Directory.collectFilesWithExt(DIR+"/src/sensor/dummy",".c",false,false);
+            SOURCES_RENDER_DRV = SOURCES_RENDER_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/render/opengles2",".c",false,false));
+            var SOURCES_SENSOR_DRV = Directory.collectFilesWithExt(DIR+"/src/sensor/windows",".c",false,false);
             var SOURCES_THREAD_DRV = Directory.collectFilesWithExt(DIR+"/src/thread/windows",".c",false,false);
             SOURCES_THREAD_DRV.push(DIR+"/src/thread/generic/SDL_syscond.c");
             var SOURCES_TIMER_DRV = Directory.collectFilesWithExt(DIR+"/src/timer/windows",".c",false,false);
             var SOURCES_VIDEO_DRV = Directory.collectFilesWithExt(DIR+"/src/video/dummy",".c",false,false);
             SOURCES_VIDEO_DRV = SOURCES_VIDEO_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/video/windows",".c",false,false));
-            var SOURCE_LOADSO_DRV = Directory.collectFilesWithExt(DIR+"/src/loadso/windows",".c",false,false);
+            var SOURCES_LOADSO_DRV = Directory.collectFilesWithExt(DIR+"/src/loadso/windows",".c",false,false);
+            var SOURCES_MISC_DRV = Directory.collectFilesWithExt(DIR+"/src/misc/windows",".c",false,false);
+            var SOURCES_LOCALE_DRV = Directory.collectFilesWithExt(DIR+"/src/locale/windows",".c",false,false);
+            var SOURCES_MAIN_DRV = Directory.collectFilesWithExt(DIR+"/src/main/windows",".c",false,false);
 
             DPARAMS.push("-D");
             DPARAMS.push("__WIN32__");
+            DPARAMS.push("-D");
+            DPARAMS.push("SDL_VIDEO_RENDER_D3D11");
             break;
         case T_TARGET_PLATFORM.ANDROID:
             DPARAMS.push("-D");
@@ -86,7 +94,7 @@ function sdl2()
         "-I",DIR+"/include/",
         "-I",VX_SOURCE_CORE_PATH,
         "-I",VX_SOURCE_CORE_PATH + "/native/window",
-        "-I",LIBS_PLATFORM_PATH + "/glad/include"
+        "-I","src/glad/include"
     ]);
 
     SOURCES = SOURCES.concat(
@@ -105,10 +113,13 @@ function sdl2()
         SOURCES_VIDEO,
         SOURCES_VIDEO_YUV2RGB,
         SOURCES_JOYSTICK,
+        SOURCES_JOYSTICK_VIRTUAL,
         SOURCES_HAPTIC,
         SOURCES_SENSOR,
         SOURCES_POWER,
         SOURCES_HIDAPI,
+        SOURCES_MISC,
+        SOURCES_LOCALE,
         // ========== DRIVERS ==========
         SOURCES_RENDER_DRV,
         SOURCES_AUDIO_DRV,
@@ -122,14 +133,14 @@ function sdl2()
         SOURCES_POWER_DRV,
         SOURCES_SENSOR_DRV,
         SOURCES_TIMER_DRV,
-        SOURCE_LOADSO_DRV
+        SOURCES_LOADSO_DRV,
+        SOURCES_MISC_DRV,
+        SOURCES_LOCALE_DRV,
+        SOURCES_MAIN_DRV
     );
 
-/*
-    var GLAD_SOURCES = Directory.collectFilesWithExt(LIBS_PLATFORM_PATH + "/glad/src", ".c", false, false);
-    var VICTRIX_WINDOWIMPL = Directory.collectFilesContainingString(VX_SOURCE_CORE_PATH, "SDL", ".cpp", true, false);
-    SOURCES = SOURCES.concat(GLAD_SOURCES, VICTRIX_WINDOWIMPL);
-*/
+    //var GLAD_SOURCES = Directory.collectFilesWithExt("src/glad/src", ".c", false, false);
+    //SOURCES = SOURCES.concat(GLAD_SOURCES);
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
