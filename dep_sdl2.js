@@ -86,16 +86,13 @@ function sdl2()
             DPARAMS.push("__ANDROID__");
             break;
     }
-    var INCLUDES = arrayToString([
+    var INCLUDES = [
         "-I",LIBS_PLATFORM_PATH+"/sdl_include/windows",
         "-I",DIR+"/include",
         "-I",DIR+"/src/hidapi/hidapi",
         "-I",DIR+"/src/video/khronos",
-        "-I",DIR+"/include/",
-        "-I",VX_SOURCE_CORE_PATH,
-        "-I",VX_SOURCE_CORE_PATH + "/native/window",
-        "-I","src/glad/include"
-    ]);
+        "-I",DIR+"/include/"
+    ];
 
     SOURCES = SOURCES.concat(
         SOURCES_ATOMIC,
@@ -148,5 +145,5 @@ function sdl2()
 
     if (AMALGAMATED_INCLUDES_ONLY) return 0;
 
-    return compileGCC(SOURCES, CFLAGS, INCLUDES, arrayToString(DPARAMS), "SDL");
+    return compileGCC(SOURCES, CFLAGS, arrayToString(INCLUDES), arrayToString(DPARAMS), "SDL");
 }

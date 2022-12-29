@@ -16,7 +16,7 @@ function generateCMakeLists(
     arrDparams
     ) {
 
-    var TEMPLATE_DIR = "./toolchain/cmake_templates";
+    var TEMPLATE_DIR = "./jsmake-scripts/cmake_templates";
 
     var template_vars = {
         "project_name": projectName,
