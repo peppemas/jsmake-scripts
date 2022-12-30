@@ -11,7 +11,7 @@ function vfspp()
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D", "PLATFORM_STANDARD"
+        "-D", PLATFORM_STANDARD
     ];
     var INCLUDES = [
         "-I", DIR + "/include"
