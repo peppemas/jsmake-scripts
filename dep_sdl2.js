@@ -13,6 +13,7 @@ function sdl2()
     var DPARAMS =
         [
             "-D",PLATFORM,
+            "-D","SDL_MAIN_HANDLED",    // we manage ourself window handle
             "-D","NDEBUG",
             "-D","_MBCS",
             "-D","HAVE_SHELLSCALINGAPI_H"

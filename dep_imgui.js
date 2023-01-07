@@ -13,6 +13,7 @@ function imgui()
         DIR + "/imgui.cpp",
         DIR + "/imgui_draw.cpp",
         DIR + "/imgui_widgets.cpp",
+        DIR + "/imgui_tables.cpp",
     ];
     var INCLUDES = [
         "-I",DIR,
