@@ -2,7 +2,7 @@ function tinygltf() {
     Log.info("### Compile TINYGLTF (Header Only)");
 
     var GITHUB_URL = "https://github.com/syoyo/tinygltf.git";
-    var VERSION = "master";
+    var VERSION = "v2.8.14";
 
     var DIR = INSTALL_LIB_DIR + "/tinygltf";
 

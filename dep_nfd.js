@@ -4,7 +4,7 @@ function nfd()
     Log.info("### Compile NFD");
 
     var GITHUB_URL = "https://github.com/mlabbe/nativefiledialog.git";
-    var VERSION = "master";
+    var VERSION = "release_116";
 
     var DIR = INSTALL_LIB_DIR + "/nfd";
 
