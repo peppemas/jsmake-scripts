@@ -3,7 +3,7 @@ function vkbootstrap() {
     Log.warn("### Compile VKBOOTSTRAP");
 
     var GITHUB_URL = "https://github.com/charles-lunarg/vk-bootstrap.git";
-    var VERSION = "v0.6";
+    var VERSION = "v0.7";
 
     var DIR = INSTALL_LIB_DIR + "/vkbootstrap";
 

@@ -8,7 +8,7 @@ function rtaudio() {
     Log.info("### Compile RTAUDIO");
 
     var GITHUB_URL = "https://github.com/thestk/rtaudio.git";
-    var VERSION = "5.1.0";
+    var VERSION = "6.0.1";
 
     var DIR = INSTALL_LIB_DIR + "/rtaudio";
 
