@@ -11,13 +11,27 @@ function openxr() {
 
     var DPARAMS = [
         "-D",PLATFORM,
+        "-D","XR_OS_WINDOWS"
     ];
     var INCLUDES = [
-        "-I",INSTALL_LIB_DIR + "/include",
+        "-I",DIR + "/include",
+        "-I",DIR + "/src",
+        "-I",DIR + "/src/common",
+        "-I",DIR + "/src/external/jsoncpp/include"
     ];
+    var SOURCES = [];
+
+    /*
     var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".c", true, false);
     var SOURCES_CPP = Directory.collectFilesWithExt(DIR + "/src", ".cpp", true, false);
     SOURCES = SOURCES.concat(SOURCES_CPP);
+
+    if (TARGET_PLATFORM === T_TARGET_PLATFORM.WINDOWS) {
+        SOURCES = removeItemContainingString(SOURCES,"jnipp");
+        SOURCES = removeItemContainingString(SOURCES,"android");
+    }
+    SOURCES = removeItemContainingString(SOURCES,"example");
+     */
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
