@@ -19,5 +19,5 @@ function blend2d() {
     AMALGAMATED_DPARAMS.push(DPARAMS);
     if (AMALGAMATED_INCLUDES_ONLY) return 0;
 
-    return compileGCC(SOURCES, CFLAGS, arrayToString(INCLUDES), arrayToString(DPARAMS), "cairo");
+    return compileGCC(SOURCES, CFLAGS, arrayToString(INCLUDES), arrayToString(DPARAMS), "blend2d");
 }
