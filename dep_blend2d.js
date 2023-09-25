@@ -9,14 +9,18 @@ function blend2d() {
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
-    var DPARAMS = ["-D",PLATFORM];
+    var DPARAMS = [
+        "-D",PLATFORM,
+        "-D","BL_BUILD_NO_JIT"  // ASMJIT actually is disabled because it's not support ARM32/ARM64
+    ];
     var INCLUDES = [
         "-I", DIR + "/src",
     ];
-    var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".cpp", false, true);
+    var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".cpp", true, false);
 
     AMALGAMATED_INCLUDES.push(INCLUDES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
+    AMALGAMATED_SOURCES.push(SOURCES);
     if (AMALGAMATED_INCLUDES_ONLY) return 0;
 
     return compileGCC(SOURCES, CFLAGS, arrayToString(INCLUDES), arrayToString(DPARAMS), "blend2d");
