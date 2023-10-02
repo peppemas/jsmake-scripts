@@ -4,7 +4,7 @@ function sdl2()
     Log.warn("### Compile SDL2");
 
     var GITHUB_URL = "https://github.com/libsdl-org/SDL.git";
-    var VERSION = "release-2.28.2";
+    var VERSION = "release-2.28.4";
 
     var DIR = INSTALL_LIB_DIR + "/sdl2";
 
