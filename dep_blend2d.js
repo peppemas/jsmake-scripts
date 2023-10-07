@@ -11,12 +11,14 @@ function blend2d() {
 
     var DPARAMS = [
         "-D",PLATFORM,
+        "-D","BL_STATIC",
         "-D","BL_BUILD_NO_JIT"  // ASMJIT actually is disabled because it's not support ARM32/ARM64
     ];
     var INCLUDES = [
         "-I", DIR + "/src",
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".cpp", true, false);
+    SOURCES = removeItemContainingString(SOURCES, "_test");
 
     AMALGAMATED_INCLUDES.push(INCLUDES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
