@@ -17,13 +17,14 @@ function agg() {
     ];
 
     var SOURCES = [];
-    var SOURCES_AGG = Directory.collectFilesWithExt(DIR + "/agg-src/src", ".cpp", false, false);
+    var SOURCES_AGG = Directory.collectFilesWithExt(DIR + "/agg-src/src", ".cpp", true, false);
     var SOURCES_AGG_CTRL = Directory.collectFilesWithExt(DIR + "/agg-src/src/ctrl", ".cpp", false, false);
     SOURCES = SOURCES.concat(
         SOURCES_AGG,
         SOURCES_AGG_CTRL
     );
 
+    AMALGAMATED_INCLUDES.push(SOURCES);
     AMALGAMATED_INCLUDES.push(INCLUDES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
     if (AMALGAMATED_INCLUDES_ONLY) return 0;
