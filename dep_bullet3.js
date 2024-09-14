@@ -16,6 +16,9 @@ function bullet3() {
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".cpp", true, false);
     removeItemContainingString(SOURCES, "Bullet3OpenCL");
+    removeItemContainingString(SOURCES, "btBulletCollisionAll");
+    removeItemContainingString(SOURCES, "btBulletDynamicsAll");
+    removeItemContainingString(SOURCES, "btLinearMathAll");
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
