@@ -80,9 +80,9 @@ function sdl2()
             DPARAMS.push("-D");
             DPARAMS.push("__WIN32__");
             DPARAMS.push("-D");
-            if (T_TARGET_RENDERER === T_TARGET_RENDERER.OPENGL) {
-                DPARAMS.push("SDL_VIDEO_RENDER_OPENGL");
-            } else if (T_TARGET_RENDERER === T_TARGET_RENDERER.DIRECTX) {
+            if (TARGET_RENDERER === T_TARGET_RENDERER.OPENGL) {
+                DPARAMS.push("SDL_VIDEO_RENDER_OGL");
+            } else if (TARGET_RENDERER === T_TARGET_RENDERER.DIRECTX) {
                 DPARAMS.push("SDL_VIDEO_RENDER_D3D11");
             }
             break;
