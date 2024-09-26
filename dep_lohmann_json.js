@@ -2,7 +2,7 @@ function lohmann_json() {
     Log.info("### Compile LOHMANN JSON (HEADER ONLY)");
 
     var GITHUB_URL = "https://github.com/nlohmann/json.git";
-    var VERSION = "v3.9.1";
+    var VERSION = "v3.11.3";
 
     var DIR = INSTALL_LIB_DIR + "/lohmannjson";
 
