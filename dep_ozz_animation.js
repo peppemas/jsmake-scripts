@@ -18,7 +18,9 @@ function ozz_animation()
 
     // common for all platforms
     var SOURCES = Directory.collectFilesWithExt(DIR+"/src", ".cc", true, false);
-    SOURCES = removeItemContainingString(SOURCES,"animation/offline"); // remove the CLI exec
+    SOURCES = removeItemContainingString(SOURCES,"animation/offline/fbx"); // remove the CLI exec
+    SOURCES = removeItemContainingString(SOURCES,"animation/offline/gltf"); // remove the CLI exec
+    SOURCES = removeItemContainingString(SOURCES,"animation/offline/tools"); // remove the CLI exec
 
     var INCLUDES = [
         "-I",DIR+"/include",
