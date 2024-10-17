@@ -12,6 +12,8 @@ function blend2d() {
     var DPARAMS = [
         "-D",PLATFORM,
         "-D","BL_STATIC",
+        "-D","BL_TARGET_OPT_SSE4_2",
+        "-D","BL_BUILD_OPT_SSE4_2",
         "-D","BL_BUILD_NO_JIT"  // ASMJIT actually is disabled because it's not support ARM32/ARM64
     ];
     var INCLUDES = [
