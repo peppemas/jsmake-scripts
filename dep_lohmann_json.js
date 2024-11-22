@@ -12,13 +12,14 @@ function lohmann_json() {
         "-D",PLATFORM,
     ];
     var INCLUDES = [
-        "-I",INSTALL_LIB_DIR + "/single_include",
+        "-I", DIR + "/single_include",
     ];
     var SOURCES = [];
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
     AMALGAMATED_INCLUDES.push(INCLUDES);
+
     if (AMALGAMATED_INCLUDES_ONLY) return 0;
 
     return 0;
