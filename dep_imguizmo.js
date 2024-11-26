@@ -2,8 +2,8 @@ function imguizmo()
 {
     Log.warn("### Compile IMGUIZMO");
 
-    var GITHUB_URL = "";
-    var VERSION = "v1.83";
+    var GITHUB_URL = "https://github.com/CedricGuillemet/ImGuizmo.git";
+    var VERSION = "1.83";
 
     var DIR = INSTALL_LIB_DIR + "/imguizmo";
 
