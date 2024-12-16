@@ -9,6 +9,11 @@
 function WindowsPath(path) {
     return path.replace(/\//g, "\\");
 }
+
+function LinuxPath(path) {
+    return path.replace(/\\/g, "/");
+}
+
 function AddBrackets(path) {
     return "\"" + path + "\"";
 }

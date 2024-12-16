@@ -2,11 +2,12 @@
  *
  * CMAKE TOOLS for jsmake
  *
- * Copyright (C) 2020-2021 Victrix Games
+ * Copyright (C) 2020-2024 Victrix Games
  *
  ***************************************************/
 
 function generateCMakeLists(
+    filename,
     projectName,
     isStaticLibrary,
     arrSubdirs,
@@ -34,7 +35,7 @@ function generateCMakeLists(
         var template_content = Directory.readTextFile(TEMPLATE_DIR + "/static_library.template");
         var template_result = Template.render(template_content, JSON.stringify(template_vars));
         //Log.info(template_result);
-        Directory.writeTextFile("CMakeLists.txt",template_result);
+        Directory.writeTextFile(filename,template_result);
     } else {
         Log.error("Cannot find CMakeLists.template");
     }
