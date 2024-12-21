@@ -1,9 +1,9 @@
 function yoga() {
-
     Log.info("### Compile YOGA");
 
     var GITHUB_URL = "https://github.com/facebook/yoga.git";
-    var VERSION = "1.18.0";
+    //var VERSION = "1.18.0";
+    var VERSION = "v2.0.1";
 
     var DIR = INSTALL_LIB_DIR + "/yoga";
 
