@@ -4,16 +4,29 @@ function assimp() {
     Log.info("### Compile ASSIMP");
 
     var GITHUB_URL = "https://github.com/assimp/assimp.git";
-    var VERSION = "v5.0.1";
+    var VERSION = "v5.4.3";
 
-    var FORMATS = ["Common","PostProcessing","Material","FBX","glTF","glTF2","X","Collada"];
+    var FORMATS = [
+        "Common",
+        "PostProcessing",
+        "Material",
+        "Geometry",
+        "CApi",
+        "AssetLib/Obj",
+        "AssetLib/FBX",
+        //"AssetLib/glTF",
+        //"AssetLib/glTF2",
+    ];
 
     var DIR = INSTALL_LIB_DIR + "/assimp";
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        //"-D", "ASSIMP_BUILD_NO_X_IMPORTER",
+        "-D", "ASSIMP_BUILD_NO_USD_IMPORTER",
+        "-D", "ASSIMP_BUILD_NO_M3D_IMPORTER",
+        "-D", "ASSIMP_BUILD_NO_IQM_IMPORTER",
+        "-D", "ASSIMP_BUILD_NO_X_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_AMF_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_3DS_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_MD3_IMPORTER",
@@ -21,7 +34,7 @@ function assimp() {
         "-D", "ASSIMP_BUILD_NO_MD2_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_PLY_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_ASE_IMPORTER",
-        "-D", "ASSIMP_BUILD_NO_OBJ_IMPORTER",
+        //"-D", "ASSIMP_BUILD_NO_OBJ_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_HMP_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_SMD_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_MDC_IMPORTER",
@@ -39,7 +52,7 @@ function assimp() {
         "-D", "ASSIMP_BUILD_NO_IRR_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_Q3D_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_B3D_IMPORTER",
-        //"-D", "ASSIMP_BUILD_NO_COLLADA_IMPORTER",
+        "-D", "ASSIMP_BUILD_NO_COLLADA_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_TERRAGEN_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_CSM_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_3D_IMPORTER",
@@ -55,12 +68,36 @@ function assimp() {
         "-D", "ASSIMP_BUILD_NO_XGL_IMPORTER",
         //"-D", "ASSIMP_BUILD_NO_FBX_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_ASSBIN_IMPORTER",
-        //"-D", "ASSIMP_BUILD_NO_GLTF_IMPORTER",
+        "-D", "ASSIMP_BUILD_NO_GLTF_IMPORTER",
+        "-D", "ASSIMP_BUILD_NO_GLTF2_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_C4D_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_3MF_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_X3D_IMPORTER",
         "-D", "ASSIMP_BUILD_NO_MMD_IMPORTER",
-        "-D", "ASSIMP_BUILD_NO_STEP_IMPORTER"
+        "-D", "ASSIMP_BUILD_NO_STEP_IMPORTER",
+
+        "-D", "ASSIMP_BUILD_NO_COLLADA_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_3DS_EXPORTER",
+        //"-D", "ASSIMP_BUILD_NO_OBJ_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_STL_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_PLY_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_MS3D_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_M3D_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_X3D_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_GLTF_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_GLTF2_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_ASSBIN_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_ASSXML_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_IFC_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_XGL_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_X_EXPORTER",
+        //"-D", "ASSIMP_BUILD_NO_FBX_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_STEP_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_C4D_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_3MF_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_MMD_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_ASSJSON_EXPORTER",
+        "-D", "ASSIMP_BUILD_NO_PBRT_EXPORTER",
     ];
     var INCLUDES = [
         "-I", DIR + "/include",
@@ -70,7 +107,8 @@ function assimp() {
         "-I", DIR + "/contrib/irrXML",
         "-I", DIR + "/contrib/zip/src",
         "-I", DIR + "/contrib/zlib",
-        "-I", DIR
+        "-I", DIR + "/contrib/utf8cpp/source",
+        "-I", DIR + "/contrib",
     ];
 
     var SOURCES = [];
@@ -78,11 +116,11 @@ function assimp() {
         SOURCES = SOURCES.concat(Directory.collectFilesWithExt(DIR + "/code/"+FORMATS[i], ".cpp", true, false));
     }
     SOURCES = SOURCES.concat(Directory.collectFilesWithExt(DIR + "/contrib/unzip", ".c", true, false));
-    SOURCES = SOURCES.concat(Directory.collectFilesWithExt(DIR + "/contrib/irrXML", ".cpp", true, false));
+    SOURCES = SOURCES.concat(Directory.collectFilesWithExt(DIR + "/contrib/pugixml", ".cpp", true, false));
     SOURCES = SOURCES.concat(Directory.collectFilesWithExt(DIR + "/contrib/zip", ".cpp", true, false));
     SOURCES = SOURCES.concat(Directory.collectFilesWithExt(DIR + "/contrib/zlib", ".c", false, false));
 
-    build_assimp_revision_h(DIR+"/include", 5, 0, 1);
+    build_assimp_revision_h(DIR+"/include/assimp", 5, 4, 3);
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);

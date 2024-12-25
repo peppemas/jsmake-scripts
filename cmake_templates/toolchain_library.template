@@ -9,9 +9,7 @@ cmake_minimum_required(VERSION 3.19)
 
 message(STATUS "{{ project_name }} LIBRARY")
 
-set(CUSTOM_CFLAGS "{{ cflags }}")
-set(CUSTOM_DEFINES "{{ dparams }}")
-add_definitions(${CUSTOM_CFLAGS} ${CUSTOM_DEFINES})
+set({{ project_name }}_DEFINITIONS "{{ dparams }}")
 
 set({{ project_name }}_SOURCES
 {% for source in array_sources %}
@@ -19,7 +17,7 @@ set({{ project_name }}_SOURCES
 {% endfor %}
 )
 
-set({{ project_name }}_INCLUDE_DIRS
+set({{ project_name }}_INCLUDES
 {% for header in array_headers %}
 {{ header }}
 {% endfor %}
