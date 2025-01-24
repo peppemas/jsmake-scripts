@@ -4,7 +4,7 @@ function sdl3()
     Log.warn("### Compile SDL3");
 
     var GITHUB_URL = "https://github.com/libsdl-org/SDL.git";
-    var VERSION = "preview-3.1.6";
+    var VERSION = "release-3.2.0";
 
     var DIR = INSTALL_LIB_DIR + "/sdl3";
 
