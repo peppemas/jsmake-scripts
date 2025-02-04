@@ -26,8 +26,8 @@ function bimg() {
             "-I", INSTALL_LIB_DIR + "/bx/include/compat/mingw"
         ]);
         DPARAMS = DPARAMS.concat([
-            "-D","BX_PLATFORM_WINDOWS",
-            "-D","BX_CONFIG_DEBUG=0"
+            "BX_PLATFORM_WINDOWS",
+            "BX_CONFIG_DEBUG=0"
         ])
     } else {
         Log.error("TARGET PLATFORM compilation not yet implemented.");

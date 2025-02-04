@@ -20,7 +20,7 @@ function imguizmo()
         "-I",DIR,
     ];
     var DPARAMS = [
-        "-D",PLATFORM,
+        PLATFORM,
     ];
 
     AMALGAMATED_SOURCES.push(SOURCES);

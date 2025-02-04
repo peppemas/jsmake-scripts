@@ -29,7 +29,7 @@ function compile_nanovg_gl() {
         "-I", DIR,
         "-I", INSTALL_LIB_DIR + "/nanosvg/src"
     ];
-    var DPARAMS = ["-D",PLATFORM_STANDARD, "-D","_CRT_SECURE_NO_WARNINGS"];
+    var DPARAMS = [PLATFORM_STANDARD, "_CRT_SECURE_NO_WARNINGS"];
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);

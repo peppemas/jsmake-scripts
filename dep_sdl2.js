@@ -12,11 +12,11 @@ function sdl2()
 
     var DPARAMS =
         [
-            "-D",PLATFORM,
-            "-D","SDL_MAIN_HANDLED",    // we manage ourself window handle
-            "-D","NDEBUG",
-            "-D","_MBCS",
-            "-D","HAVE_SHELLSCALINGAPI_H"
+            PLATFORM,
+            "SDL_MAIN_HANDLED",    // we manage ourself window handle
+            "NDEBUG",
+            "_MBCS",
+            "HAVE_SHELLSCALINGAPI_H"
         ];
 
     // common for all platforms

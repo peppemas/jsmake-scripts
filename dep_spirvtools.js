@@ -12,7 +12,7 @@ function spirvtools()
 
     var DPARAMS =
         [
-            "-D",PLATFORM
+            PLATFORM
         ];
 
     // common for all platforms

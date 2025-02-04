@@ -12,7 +12,7 @@ function gravity()
 
     var DPARAMS =
         [
-            "-D",PLATFORM
+            PLATFORM
         ];
 
     // common for all platforms

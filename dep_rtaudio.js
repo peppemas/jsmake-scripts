@@ -14,7 +14,7 @@ function rtaudio() {
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
-    var DPARAMS = ["-D","__WINDOWS_WASAPI__"];
+    var DPARAMS = ["__WINDOWS_WASAPI__"];
     var INCLUDES = [
         "-I", DIR,
         "-I", DIR + "/include"

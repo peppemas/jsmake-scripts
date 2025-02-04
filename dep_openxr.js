@@ -10,8 +10,8 @@ function openxr() {
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM,
-        "-D","XR_OS_WINDOWS"
+        PLATFORM,
+        "XR_OS_WINDOWS"
     ];
     var INCLUDES = [
         "-I",DIR + "/include",

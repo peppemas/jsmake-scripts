@@ -11,7 +11,7 @@ function libogg()
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM
+        PLATFORM
     ];
     var INCLUDES = [
         "-I",DIR+"/include"

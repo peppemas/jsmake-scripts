@@ -5,19 +5,16 @@
 # Creation Date: {{ creation_date }}
 #
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.9)
 
 project({{ project_name }})
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-add_definitions( "{{ cflags }} {{ dparams }}" )
-
+set(CMAKE_CXX_FLAGS "{{ cflags }}")
+set(BUILD_SHARED_LIBS OFF)
 {% if release %}
 set(CMAKE_BUILD_TYPE Release)
 {% endif %}
-
-set(BUILD_SHARED_LIBS OFF)
 
 # Include Directories
 include_directories(
@@ -35,7 +32,9 @@ set(SOURCE_FILES
 
 add_library({{ project_name}} STATIC ${SOURCE_FILES})
 
-target_link_libraries({{ project_name }}
+target_compile_definitions({{ project_name}} PUBLIC {{ dparams }})
+
+target_link_libraries({{ project_name }} PUBLIC
 winmm
 opengl32
 gdi32

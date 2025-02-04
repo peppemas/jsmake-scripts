@@ -9,7 +9,7 @@ function toml() {
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM,
+        PLATFORM,
     ];
     var INCLUDES = [
         "-I",INSTALL_LIB_DIR,

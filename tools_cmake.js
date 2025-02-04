@@ -6,6 +6,22 @@
  *
  ***************************************************/
 
+function removeDuplicates(arr) {
+    var uniqueArr = [];
+    var seen = {}; // Object to track seen values
+
+    for (var i = 0; i < arr.length; i++) {
+        var item = arr[i];
+        if (item === "-D") continue;
+        if (!seen[item]) {
+            uniqueArr.push(item);
+            seen[item] = true; // Mark as seen
+        }
+    }
+
+    return uniqueArr;
+}
+
 function generateCMakeLists(
     filename,
     projectName,
@@ -19,6 +35,8 @@ function generateCMakeLists(
 
     var TEMPLATE_DIR = "./jsmake-scripts/cmake_templates";
 
+    const uniqueArr = removeDuplicates(arrDparams);
+
     var template_vars = {
         "project_name": projectName,
         "creation_date": Date(),
@@ -28,7 +46,7 @@ function generateCMakeLists(
         "array_headers": arrHeaders,
         "array_sources": arrSources,
         "cflags": cflags,
-        "dparams": arrayToString(arrDparams)
+        "dparams": arrayToString(uniqueArr)
     };
 
     if (Directory.exists(TEMPLATE_DIR + "/static_library.template")) {
@@ -52,6 +70,8 @@ function generateCMakeToolChain(
     arrDparams
 ) {
 
+    const uniqueArr = removeDuplicates(arrDparams);
+
     var template_vars = {
         "project_file": filename,
         "project_name": projectName,
@@ -62,7 +82,7 @@ function generateCMakeToolChain(
         "array_headers": arrHeaders,
         "array_sources": arrSources,
         "cflags": cflags,
-        "dparams": arrayToString(arrDparams)
+        "dparams": arrayToString(uniqueArr)
     };
 
     var TEMPLATE_DIR = "./jsmake-scripts/cmake_templates";

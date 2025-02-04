@@ -11,7 +11,7 @@ function vorbis()
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM,
+        PLATFORM,
         "-Wno-undef"
     ];
     var INCLUDES = [

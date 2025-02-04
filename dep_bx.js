@@ -22,8 +22,8 @@ function bx() {
             "-I", DIR + "/include/compat/mingw"
         ]);
         DPARAMS = DPARAMS.concat([
-            "-D","BX_PLATFORM_WINDOWS",
-            "-D","BX_CONFIG_DEBUG"
+            "BX_PLATFORM_WINDOWS",
+            "BX_CONFIG_DEBUG"
         ])
     } else {
         Log.error("TARGET PLATFORM compilation not yet implemented.");

@@ -12,8 +12,8 @@ function ozz_animation()
 
     var DPARAMS =
         [
-            "-D",PLATFORM,
-            "-D","OZZ_SIMD_SSE3"
+            PLATFORM,
+            "OZZ_SIMD_SSE3"
         ];
 
     // common for all platforms

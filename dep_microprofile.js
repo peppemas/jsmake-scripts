@@ -9,7 +9,7 @@ function microprofile()
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
-    var DPARAMS = arrayToString(["-D",PLATFORM]);
+    var DPARAMS = [PLATFORM];
     var INCLUDES = arrayToString([
         "-I",DIR,
     ]);

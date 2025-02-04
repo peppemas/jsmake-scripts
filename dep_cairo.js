@@ -8,7 +8,7 @@ function cairo() {
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
-    var DPARAMS = ["-D",PLATFORM];
+    var DPARAMS = [PLATFORM];
     var INCLUDES = [
         "-I", DIR,
     ];

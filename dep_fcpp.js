@@ -10,7 +10,7 @@ function fcpp() {
 
     var DIR = INSTALL_LIB_DIR + "/bgfx/3rdparty/fcpp";
 
-    var DPARAMS = ["-D", PLATFORM_STANDARD];
+    var DPARAMS = [PLATFORM_STANDARD];
     var INCLUDES = [
         "-I", DIR
     ];

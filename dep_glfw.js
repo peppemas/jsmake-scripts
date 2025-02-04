@@ -17,10 +17,10 @@ function glfw()
         "-I",DEPS
     ];
     var DPARAMS = [
-        "-D",PLATFORM,
-        "-D","SUPPORT_GESTURES_SYSTEM",
-        "-D","SUPPORT_MOUSE_GESTURES",
-        "-D","ENABLE_OPENGL"
+        PLATFORM,
+        "SUPPORT_GESTURES_SYSTEM",
+        "SUPPORT_MOUSE_GESTURES",
+        "ENABLE_OPENGL"
     ];
 
     var SOURCES = [
@@ -38,7 +38,6 @@ function glfw()
         SOURCES = SOURCES.concat(DIR + "/src/xkb_unicode.c");
     }
     if (USE_VULKAN) {
-        //"-D","_GLFW_VULKAN_STATIC"
         SOURCES = SOURCES.concat(DIR + "/deps/glad_vulkan.c");
     } else {
         SOURCES = SOURCES.concat(DIR + "/deps/glad_gl.c");
