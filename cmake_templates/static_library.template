@@ -10,21 +10,20 @@ cmake_minimum_required(VERSION 3.5)
 project({{ project_name }})
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(BUILD_SHARED_LIBS OFF)
 
-add_definitions( "{{ cflags }} {{ dparams }}" )
+#add_definitions( "{{ cflags }} {{ dparams }}" )
 
 {% if release %}
 set(CMAKE_BUILD_TYPE Release)
 {% endif %}
 
-set(BUILD_SHARED_LIBS OFF)
-
 # Include Directories
-include_directories(
-{% for header in array_headers %}
-{{ header }}
-{% endfor %}
-)
+#include_directories(
+#{% for header in array_headers %}
+#{{ header }}
+#{% endfor %}
+#)
 
 # Source Files
 set(SOURCE_FILES
@@ -33,9 +32,18 @@ set(SOURCE_FILES
 {% endfor %}
 )
 
-add_library({{ project_name}} STATIC ${SOURCE_FILES})
+add_library({{project_name}} STATIC ${SOURCE_FILES})
+# Include Directories
+target_include_directories({{project_name}} PUBLIC
+{% for header in array_headers %}
+{{ header }}
+{% endfor %}
+)
+# Include Definitions
+target_compile_definitions({{project_name}} PUBLIC
+)
 
-target_link_libraries({{ project_name }}
+target_link_libraries({{project_name}} PRIVATE
 winmm
 opengl32
 gdi32

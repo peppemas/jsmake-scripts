@@ -7,18 +7,18 @@
 #
 cmake_minimum_required(VERSION 3.19)
 
-message(STATUS "{{ project_name }} LIBRARY")
+message(STATUS "{{project_name}} LIBRARY")
 
-set({{ project_name }}_DEFINITIONS "{{ dparams }}")
+set({{project_name}}_DEFINITIONS "{{dparams}}")
 
-set({{ project_name }}_SOURCES
+set({{project_name}}_SOURCES
 {% for source in array_sources %}
 {{ source }}
 {% endfor %}
 )
 
-set({{ project_name }}_INCLUDES
+set({{project_name}}_INCLUDES
 {% for header in array_headers %}
-{{ header }}
+{{header}}
 {% endfor %}
 )
