@@ -11,16 +11,16 @@ function raylib() {
 
     var CUSTOM_CFLAGS = "-fno-strict-aliasing -O3 -DNDEBUG -std=c99"
     var DPARAMS = [
-        "-D",PLATFORM,
-        "-D","UNICODE",
-        "-D","WINVER=0x0501",
-        "-D","_CRT_SECURE_NO_WARNINGS",
-        "-D","PLATFORM_DESKTOP"
+        PLATFORM,
+        "UNICODE",
+        "WINVER=0x0501",
+        "_CRT_SECURE_NO_WARNINGS",
+        "PLATFORM_DESKTOP"
     ];
     var INCLUDES = [
-        "-I",INSTALL_LIB_DIR + "/glfw/include",
-        "-I",DIR + "/src",
-        "-I",DIR + "/src/external"
+        INSTALL_LIB_DIR + "/glfw/include",
+        DIR + "/src",
+        DIR + "/src/external"
     ];
 
 

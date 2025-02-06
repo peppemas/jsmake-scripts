@@ -9,10 +9,10 @@ function tinygltf() {
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM,
+        PLATFORM,
     ];
     var INCLUDES = [
-        "-I",INSTALL_LIB_DIR,
+        INSTALL_LIB_DIR,
     ];
     var SOURCES = [];
 

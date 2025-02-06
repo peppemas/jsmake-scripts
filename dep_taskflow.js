@@ -11,7 +11,7 @@ function taskflow() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR
+        DIR
     ];
 
     AMALGAMATED_INCLUDES.push(INCLUDES);

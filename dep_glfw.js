@@ -13,14 +13,14 @@ function glfw()
     var USE_VULKAN = false;
     var DEPS = DIR + "/deps";
     var INCLUDES = [
-        "-I",DIR + "/include",
-        "-I",DEPS
+        DIR + "/include",
+        DEPS
     ];
     var DPARAMS = [
-        "-D",PLATFORM,
-        "-D","SUPPORT_GESTURES_SYSTEM",
-        "-D","SUPPORT_MOUSE_GESTURES",
-        "-D","ENABLE_OPENGL"
+        PLATFORM,
+        "SUPPORT_GESTURES_SYSTEM",
+        "SUPPORT_MOUSE_GESTURES",
+        "ENABLE_OPENGL"
     ];
 
     var SOURCES = [
@@ -38,7 +38,7 @@ function glfw()
         SOURCES = SOURCES.concat(DIR + "/src/xkb_unicode.c");
     }
     if (USE_VULKAN) {
-        //"-D","_GLFW_VULKAN_STATIC"
+        //"_GLFW_VULKAN_STATIC"
         SOURCES = SOURCES.concat(DIR + "/deps/glad_vulkan.c");
     } else {
         SOURCES = SOURCES.concat(DIR + "/deps/glad_gl.c");
@@ -46,16 +46,16 @@ function glfw()
 
     if (Platform.isWindows()) {
         var SOURCES_WIN = Directory.collectFilesContainingString(DIR + "/src", "win32_", ".c", true, false);
-        DPARAMS.push("-D _GLFW_WIN32");
+        DPARAMS.push("_GLFW_WIN32");
         SOURCES = SOURCES.concat(SOURCES_WIN);
     } else if (Platform.isLinux()) {
         var SOURCES_POSIX = Directory.collectFilesContainingString(DIR + "/src", "posix_", ".c", true, false);
         var SOURCES_X11 = Directory.collectFilesContainingString(DIR + "/src", "x11_", ".c", true, false);
-        DPARAMS.push(" -D _GLFW_X11");
+        DPARAMS.push("_GLFW_X11");
         SOURCES = SOURCES.concat(SOURCES_POSIX).concat(SOURCES_X11);
     } else if (Platform.isMacOS()) {
         var SOURCES_OSX = Directory.collectFilesContainingString(DIR + "/src", "cocoa_", ".c", true, false);
-        DPARAMS.push(" -D _GLFW_COCOA");
+        DPARAMS.push("_GLFW_COCOA");
         SOURCES = SOURCES.concat(SOURCES_OSX);
     }
 

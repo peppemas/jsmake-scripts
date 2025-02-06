@@ -12,22 +12,22 @@ function bimg() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR + "/include",
-        "-I", DIR + "/3rdparty/astc-codec/include",
-        "-I", DIR + "/3rdparty/iqa/include",
-        "-I", DIR + "/3rdparty",
-        "-I", DIR + "/3rdparty/astc-codec",
-        "-I", INSTALL_LIB_DIR + "/bx/include",
-        "-I", INSTALL_LIB_DIR + "/miniz"
+        DIR + "/include",
+        DIR + "/3rdparty/astc-codec/include",
+        DIR + "/3rdparty/iqa/include",
+        DIR + "/3rdparty",
+        DIR + "/3rdparty/astc-codec",
+        INSTALL_LIB_DIR + "/bx/include",
+        INSTALL_LIB_DIR + "/miniz"
     ];
 
     if (TARGET_PLATFORM === T_TARGET_PLATFORM.WINDOWS) {
         INCLUDES = INCLUDES.concat([
-            "-I", INSTALL_LIB_DIR + "/bx/include/compat/mingw"
+            INSTALL_LIB_DIR + "/bx/include/compat/mingw"
         ]);
         DPARAMS = DPARAMS.concat([
-            "-D","BX_PLATFORM_WINDOWS",
-            "-D","BX_CONFIG_DEBUG=0"
+            "BX_PLATFORM_WINDOWS",
+            "BX_CONFIG_DEBUG=0"
         ])
     } else {
         Log.error("TARGET PLATFORM compilation not yet implemented.");

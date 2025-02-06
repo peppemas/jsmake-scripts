@@ -11,7 +11,7 @@ function yoga() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR
+        DIR
     ];
 
     var SOURCES = Directory.collectFilesWithExt(DIR + "/yoga", ".cpp", true, false);

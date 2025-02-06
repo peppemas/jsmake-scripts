@@ -10,14 +10,14 @@ function glm()
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM,
-        "-D","GLM_FORCE_INTRINSICS",            // enable SIMD optimizations
-        "-D","GLM_FORCE_INLINE",                // inline code where possible
-        "-D","GLM_FORCE_EXPLICIT_CTOR",         // no implicit conversions
-        "-D","GLM_FORCE_SIZE_T_LENGTH"          // length() returns size_t instead of int
+        PLATFORM,
+        "GLM_FORCE_INTRINSICS",            // enable SIMD optimizations
+        "GLM_FORCE_INLINE",                // inline code where possible
+        "GLM_FORCE_EXPLICIT_CTOR",         // no implicit conversions
+        "GLM_FORCE_SIZE_T_LENGTH"          // length() returns size_t instead of int
     ];
     var INCLUDES = [
-        "-I", DIR,
+        DIR,
     ];
     var SOURCES = [];
 

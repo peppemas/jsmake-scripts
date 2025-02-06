@@ -11,13 +11,13 @@ function vorbis()
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM,
+        PLATFORM,
         "-Wno-undef"
     ];
     var INCLUDES = [
-        "-I",INSTALL_LIB_DIR+"/libogg/include",
-        "-I",DIR+"/lib",
-        "-I",DIR+"/include"
+        INSTALL_LIB_DIR+"/libogg/include",
+        DIR+"/lib",
+        DIR+"/include"
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/lib", ".c", true, false);
 

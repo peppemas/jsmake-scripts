@@ -12,7 +12,7 @@ function bullet3() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR + "/src"
+        DIR + "/src"
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".cpp", true, false);
     removeItemContainingString(SOURCES, "Bullet3OpenCL");

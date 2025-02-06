@@ -10,7 +10,7 @@ function ddspp() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR
+        DIR
     ];
     var SOURCES = [];
 

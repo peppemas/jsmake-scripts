@@ -15,7 +15,7 @@ function build_test(SOURCE, OUTPUT)
     //     return 0;	// skip
     // }
 
-    var DPARAMS = arrayToString(["-D", PLATFORM, "-D", "BX_CONFIG_DEBUG"]);
+    var DPARAMS = [PLATFORM, "BX_CONFIG_DEBUG"];
     var LDLIBS = arrayToString([
         "-L",TARGET_PATH_DIR,
         "-l","victrix",

@@ -19,7 +19,7 @@ function devil() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR + "DevIL/include"
+        DIR + "DevIL/include"
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "Devil/src/-IL/src", ".cpp", false, false);
 

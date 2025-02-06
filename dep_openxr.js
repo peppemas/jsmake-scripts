@@ -10,14 +10,14 @@ function openxr() {
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM,
-        "-D","XR_OS_WINDOWS"
+        PLATFORM,
+        "XR_OS_WINDOWS"
     ];
     var INCLUDES = [
-        "-I",DIR + "/include",
-        "-I",DIR + "/src",
-        "-I",DIR + "/src/common",
-        "-I",DIR + "/src/external/jsoncpp/include"
+        DIR + "/include",
+        DIR + "/src",
+        DIR + "/src/common",
+        DIR + "/src/external/jsoncpp/include"
     ];
     var SOURCES = [];
 

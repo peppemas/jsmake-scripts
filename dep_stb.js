@@ -8,10 +8,10 @@ function stb() {
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
-    //TODO: with cmake not working ... var DPARAMS = ["-D","STBI_NO_STDIO"];
+    //TODO: with cmake not working ... var DPARAMS = ["STBI_NO_STDIO"];
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR
+        DIR
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR, ".c", false, false);
 

@@ -12,11 +12,11 @@ function sdl2()
 
     var DPARAMS =
         [
-            "-D",PLATFORM,
-            "-D","SDL_MAIN_HANDLED",    // we manage ourself window handle
-            "-D","NDEBUG",
-            "-D","_MBCS",
-            "-D","HAVE_SHELLSCALINGAPI_H"
+            PLATFORM,
+            "SDL_MAIN_HANDLED",    // we manage ourself window handle
+            "NDEBUG",
+            "_MBCS",
+            "HAVE_SHELLSCALINGAPI_H"
         ];
 
     // common for all platforms
@@ -77,9 +77,7 @@ function sdl2()
             var SOURCES_LOCALE_DRV = Directory.collectFilesWithExt(DIR+"/src/locale/windows",".c",false,false);
             var SOURCES_MAIN_DRV = Directory.collectFilesWithExt(DIR+"/src/main/windows",".c",false,false);
 
-            DPARAMS.push("-D");
             DPARAMS.push("__WIN32__");
-            DPARAMS.push("-D");
             if (TARGET_RENDERER === T_TARGET_RENDERER.OPENGL) {
                 DPARAMS.push("SDL_VIDEO_RENDER_OGL");
             } else if (TARGET_RENDERER === T_TARGET_RENDERER.DIRECTX) {
@@ -87,16 +85,15 @@ function sdl2()
             }
             break;
         case T_TARGET_PLATFORM.ANDROID:
-            DPARAMS.push("-D");
             DPARAMS.push("__ANDROID__");
             break;
     }
     var INCLUDES = [
-        "-I",LIBS_PLATFORM_PATH+"/sdl_include/windows",
-        "-I",DIR+"/include",
-        "-I",DIR+"/src/hidapi/hidapi",
-        "-I",DIR+"/src/video/khronos",
-        "-I",DIR+"/include/"
+        LIBS_PLATFORM_PATH+"/sdl_include/windows",
+        DIR+"/include",
+        DIR+"/src/hidapi/hidapi",
+        DIR+"/src/video/khronos",
+        DIR+"/include/"
     ];
 
     SOURCES = SOURCES.concat(

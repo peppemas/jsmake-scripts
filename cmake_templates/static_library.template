@@ -12,18 +12,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(BUILD_SHARED_LIBS OFF)
 
-#add_definitions( "{{ cflags }} {{ dparams }}" )
-
 {% if release %}
 set(CMAKE_BUILD_TYPE Release)
 {% endif %}
-
-# Include Directories
-#include_directories(
-#{% for header in array_headers %}
-#{{ header }}
-#{% endfor %}
-#)
 
 # Source Files
 set(SOURCE_FILES
@@ -32,17 +23,27 @@ set(SOURCE_FILES
 {% endfor %}
 )
 
+# Static Library
 add_library({{project_name}} STATIC ${SOURCE_FILES})
+
+# Cflags
+target_compile_options({{project_name}} PRIVATE {{cflags}})
+
 # Include Directories
 target_include_directories({{project_name}} PUBLIC
 {% for header in array_headers %}
 {{ header }}
 {% endfor %}
 )
+
 # Include Definitions
 target_compile_definitions({{project_name}} PUBLIC
+{% for dparam in array_dparams %}
+{{ dparam }}
+{% endfor %}
 )
 
+# Target Link Libraries
 target_link_libraries({{project_name}} PRIVATE
 winmm
 opengl32

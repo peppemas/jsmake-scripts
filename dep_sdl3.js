@@ -12,11 +12,11 @@ function sdl3()
 
     var DPARAMS =
         [
-            "-D",PLATFORM,
-            "-D","SDL_MAIN_HANDLED",    // we manage ourself window handle
-            "-D","NDEBUG",
-            "-D","_MBCS",
-            "-D","HAVE_SHELLSCALINGAPI_H"
+            PLATFORM,
+            "SDL_MAIN_HANDLED",    // we manage ourself window handle
+            "NDEBUG",
+            "_MBCS",
+            "HAVE_SHELLSCALINGAPI_H"
         ];
 
     // common for all platforms
@@ -116,13 +116,9 @@ function sdl3()
             var SOURCES_MAIN_DRV = Directory.collectFilesWithExt(DIR+"/src/main/windows",".c",false,false);
             var SOURCES_TIME_DRV = Directory.collectFilesWithExt(DIR+"/src/time/windows",".c",false,false);
 
-            DPARAMS.push("-D");
             DPARAMS.push("__WIN32__");
-            DPARAMS.push("-D");
             DPARAMS.push("SDL_DISABLE_OLD_NAMES");
-            DPARAMS.push("-D");
             DPARAMS.push("SDL_CAMERA_DRIVER_MEDIAFOUNDATION");
-            DPARAMS.push("-D");
             if (TARGET_RENDERER === T_TARGET_RENDERER.OPENGL) {
                 DPARAMS.push("SDL_VIDEO_RENDER_OGL");
             } else if (TARGET_RENDERER === T_TARGET_RENDERER.DIRECTX) {
@@ -130,19 +126,18 @@ function sdl3()
             }
             break;
         case T_TARGET_PLATFORM.ANDROID:
-            DPARAMS.push("-D");
             DPARAMS.push("__ANDROID__");
             break;
     }
     var INCLUDES = [
-        "-I",LIBS_PLATFORM_PATH+"/sdl_include/windows",
-        "-I",DIR+"/include",
-        "-I",DIR+"/src/hidapi/hidapi",
-        "-I",DIR+"/src/video/khronos",
-        "-I",DIR+"/include/",
-        "-I",DIR+"/include/SDL3",
-        "-I",DIR+"/include/build_config",
-        "-I",DIR+"/src"
+        LIBS_PLATFORM_PATH+"/sdl_include/windows",
+        DIR+"/include",
+        DIR+"/src/hidapi/hidapi",
+        DIR+"/src/video/khronos",
+        DIR+"/include/",
+        DIR+"/include/SDL3",
+        DIR+"/include/build_config",
+        DIR+"/src"
     ];
 
     SOURCES = SOURCES.concat(

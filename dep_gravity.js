@@ -12,7 +12,7 @@ function gravity()
 
     var DPARAMS =
         [
-            "-D",PLATFORM
+            PLATFORM
         ];
 
     // common for all platforms
@@ -20,12 +20,12 @@ function gravity()
     SOURCES = removeItemContainingString(SOURCES,"cli/gravity"); // remove the CLI exec
 
     var INCLUDES = [
-        "-I",DIR+"/src",
-        "-I",DIR+"/src/runtime",
-        "-I",DIR+"/src/shared",
-        "-I",DIR+"/src/utils",
-        "-I",DIR+"/src/optionals",
-        "-I",DIR+"/src/compiler",
+        DIR+"/src",
+        DIR+"/src/runtime",
+        DIR+"/src/shared",
+        DIR+"/src/utils",
+        DIR+"/src/optionals",
+        DIR+"/src/compiler",
     ];
 
     AMALGAMATED_SOURCES.push(SOURCES);

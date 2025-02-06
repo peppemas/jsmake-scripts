@@ -17,10 +17,10 @@ function imguizmo()
         DIR + "/ImSequencer.cpp"
     ];
     var INCLUDES = [
-        "-I",DIR,
+        DIR,
     ];
     var DPARAMS = [
-        "-D",PLATFORM,
+        PLATFORM,
     ];
 
     AMALGAMATED_SOURCES.push(SOURCES);

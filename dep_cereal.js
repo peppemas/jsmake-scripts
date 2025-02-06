@@ -10,7 +10,7 @@ function cereal() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR + "/include"
+        DIR + "/include"
     ];
     var SOURCES = [];
 

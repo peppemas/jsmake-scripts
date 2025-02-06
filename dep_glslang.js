@@ -12,7 +12,7 @@ function glslang()
 
     var DPARAMS =
         [
-            "-D",PLATFORM
+            PLATFORM
         ];
 
     // common for all platforms
@@ -29,7 +29,7 @@ function glslang()
     }
 
     var INCLUDES = [
-        "-I",DIR+"/glslang/include"
+        DIR+"/glslang/include"
     ];
 
     AMALGAMATED_SOURCES.push(SOURCES);

@@ -10,13 +10,13 @@ function theorafile()
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM
+        PLATFORM
     ];
     var INCLUDES = [
-        "-I",DIR,
-        "-I",INSTALL_LIB_DIR+"/libogg/include",
-        "-I",INSTALL_LIB_DIR+"/vorbis/include",
-        "-I",INSTALL_LIB_DIR+"/theora/include"
+        DIR,
+        INSTALL_LIB_DIR+"/libogg/include",
+        INSTALL_LIB_DIR+"/vorbis/include",
+        INSTALL_LIB_DIR+"/theora/include"
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR, ".c", false, false);
 

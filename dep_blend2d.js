@@ -10,14 +10,14 @@ function blend2d() {
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM,
-        "-D","BL_STATIC",
-        "-D","BL_TARGET_OPT_SSE4_2",
-        "-D","BL_BUILD_OPT_SSE4_2",
-        "-D","BL_BUILD_NO_JIT"  // ASMJIT actually is disabled because it's not support ARM32/ARM64
+        PLATFORM,
+        "BL_STATIC",
+        "BL_TARGET_OPT_SSE4_2",
+        "BL_BUILD_OPT_SSE4_2",
+        "BL_BUILD_NO_JIT"  // ASMJIT actually is disabled because it's not support ARM32/ARM64
     ];
     var INCLUDES = [
-        "-I", DIR + "/src",
+        DIR + "/src",
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".cpp", true, false);
     SOURCES = removeItemContainingString(SOURCES, "_test");

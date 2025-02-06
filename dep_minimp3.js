@@ -10,7 +10,7 @@ function minimp3() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR
+        DIR
     ];
     var SOURCES = [];
 

@@ -11,7 +11,7 @@ function fmt() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR + "/include"
+        DIR + "/include"
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".cc", false, false);
 

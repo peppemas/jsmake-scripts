@@ -16,10 +16,10 @@ function imgui()
         DIR + "/imgui_tables.cpp",
     ];
     var INCLUDES = [
-        "-I",DIR,
+        DIR,
     ];
     var DPARAMS = [
-        "-D",PLATFORM,
+        PLATFORM,
     ];
 
     AMALGAMATED_SOURCES.push(SOURCES);

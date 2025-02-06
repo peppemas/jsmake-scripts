@@ -11,10 +11,10 @@ function nfd()
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D", PLATFORM_STANDARD
+        PLATFORM_STANDARD
     ];
     var INCLUDES = [
-        "-I", DIR + "/src/include",
+        DIR + "/src/include",
     ];
     var SOURCES = [
         DIR + "/src/nfd_common.c"

@@ -29,7 +29,7 @@ function build_test(SOURCE, OUTPUT)
         return 0;	// skip
     }
 
-    var DPARAMS = ["-D", PLATFORM, "-D", PLATFORM_STANDARD];
+    var DPARAMS = [PLATFORM, PLATFORM_STANDARD];
     var LDLIBS = [
         "-L",TARGET_PATH_DIR,
         "-l","victrix",
@@ -51,21 +51,21 @@ function build_test(SOURCE, OUTPUT)
     ];
 
     if (TARGET_BUILD === T_TARGET_BUILD.DEBUG) {
-        DPARAMS.concat(["-D", "VX_DEBUG"]);
+        DPARAMS.concat(["VX_DEBUG"]);
     } else {
-        DPARAMS.concat(["-D", "VX_RELEASE"]);
+        DPARAMS.concat(["VX_RELEASE"]);
     }
 
     if (TARGET_GRAPHICS === T_TARGET_GRAPHICS.BGFX) {
-        DPARAMS = DPARAMS.concat(["-D", "VX_BGFX"]);
+        DPARAMS = DPARAMS.concat(["VX_BGFX"]);
     } else {
-        DPARAMS = DPARAMS.concat(["-D", "VX_OPENGL"]);
+        DPARAMS = DPARAMS.concat(["VX_OPENGL"]);
     }
 
     if (TARGET_AUDIO === T_TARGET_AUDIO.MINIAUDIO) {
-        DPARAMS = DPARAMS.concat("-D", "VX_AUDIO_MINIAUDIO");
+        DPARAMS = DPARAMS.concat("VX_AUDIO_MINIAUDIO");
     } else if (TARGET_AUDIO === T_TARGET_AUDIO.RTAUDIO) {
-        DPARAMS = DPARAMS.concat("-D", "VX_AUDIO_RTAUDIO");
+        DPARAMS = DPARAMS.concat("VX_AUDIO_RTAUDIO");
     }
 
     if (TARGET_BUILD === T_TARGET_BUILD.DEBUG) {

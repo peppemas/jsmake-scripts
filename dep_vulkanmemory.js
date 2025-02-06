@@ -11,10 +11,10 @@ function vulkanmemory()
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D", PLATFORM
+        PLATFORM
     ];
     var INCLUDES = [
-        "-I", DIR + "/src"
+        DIR + "/src"
     ];
     var SOURCES = [];
 

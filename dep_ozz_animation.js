@@ -12,8 +12,8 @@ function ozz_animation()
 
     var DPARAMS =
         [
-            "-D",PLATFORM,
-            "-D","OZZ_SIMD_SSE3"
+            PLATFORM,
+            "OZZ_SIMD_SSE3"
         ];
 
     // common for all platforms
@@ -23,8 +23,8 @@ function ozz_animation()
     SOURCES = removeItemContainingString(SOURCES,"animation/offline/tools"); // remove the CLI exec
 
     var INCLUDES = [
-        "-I",DIR+"/include",
-        "-I",DIR+"/src",
+        DIR+"/include",
+        DIR+"/src",
     ];
 
     AMALGAMATED_SOURCES.push(SOURCES);

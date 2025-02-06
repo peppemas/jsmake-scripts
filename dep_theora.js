@@ -11,11 +11,11 @@ function theora()
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM
+        PLATFORM
     ];
     var INCLUDES = [
-        "-I",INSTALL_LIB_DIR+"/libogg/include",
-        "-I",DIR+"/include"
+        INSTALL_LIB_DIR+"/libogg/include",
+        DIR+"/include"
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/lib", ".c", false, false);
 

@@ -12,7 +12,7 @@ function soloud()
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I",DIR+"/include"
+        DIR+"/include"
     ];
 
     var SOURCES = [];
@@ -30,7 +30,7 @@ function soloud()
     var SOURCES_MONOTONE = Directory.collectFilesWithExt(DIR + "/src/audiosource/monotone", ".cpp", true, false);
     var SOURCES_BACKEND = DIR + "/src/backend/miniaudio/soloud_miniaudio.cpp";
 
-    var DPARAMS = arrayToString(["-D",PLATFORM,"-D","WITH_MINIAUDIO"]);
+    var DPARAMS = [PLATFORM,"WITH_MINIAUDIO"];
 
     SOURCES = SOURCES.concat(
         SOURCES_CORE,

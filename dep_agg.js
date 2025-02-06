@@ -10,10 +10,10 @@ function agg() {
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D", PLATFORM
+        PLATFORM
     ];
     var INCLUDES = [
-        "-I", DIR + "/agg-src/include",
+        DIR + "/agg-src/include",
     ];
 
     var SOURCES = [];

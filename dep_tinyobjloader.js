@@ -11,10 +11,10 @@ function tinyobjloader()
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D", "PLATFORM_STANDARD"
+        "PLATFORM_STANDARD"
     ];
     var INCLUDES = [
-        "-I", DIR
+        DIR
     ];
     var SOURCES = [ DIR + "/tiny_obj_loader.cc" ];
 

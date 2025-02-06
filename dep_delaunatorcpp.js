@@ -9,7 +9,7 @@ function delaunatorcpp() {
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var INCLUDES = [
-        "-I", DIR + "/include"
+        DIR + "/include"
     ];
 
     AMALGAMATED_INCLUDES.push(INCLUDES);

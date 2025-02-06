@@ -12,14 +12,14 @@ function spirvtools()
 
     var DPARAMS =
         [
-            "-D",PLATFORM
+            PLATFORM
         ];
 
     // common for all platforms
     var SOURCES = Directory.collectFilesWithExt(DIR+"/source", ".cpp", true, false);
 
     var INCLUDES = [
-        "-I",DIR+"/src/include"
+        DIR+"/src/include"
     ];
 
     AMALGAMATED_SOURCES.push(SOURCES);

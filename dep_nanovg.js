@@ -26,10 +26,10 @@ function compile_nanovg_gl() {
     var DIR = INSTALL_LIB_DIR + "/nanovg/src";
     var SOURCES = Directory.collectFilesWithExt(DIR, ".c", true, false);
     var INCLUDES = [
-        "-I", DIR,
-        "-I", INSTALL_LIB_DIR + "/nanosvg/src"
+        DIR,
+        INSTALL_LIB_DIR + "/nanosvg/src"
     ];
-    var DPARAMS = ["-D",PLATFORM_STANDARD, "-D","_CRT_SECURE_NO_WARNINGS"];
+    var DPARAMS = [PLATFORM_STANDARD, "_CRT_SECURE_NO_WARNINGS"];
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);
@@ -45,16 +45,16 @@ function nanovg_bgfx() {
     var SOURCES = Directory.collectFilesWithExt(DIR + "/nanovg", ".c", false, false);
     SOURCES = SOURCES.concat(Directory.collectFilesWithExt(DIR + "/nanovg", ".cpp", false, false));
     var INCLUDES = [
-        "-I", DIR + "/nanovg",
-        "-I", LIBS_TIER1_PATH + "/stb",
-        "-I", LIBS_TIER1_PATH + "/bx/include",
-        "-I", LIBS_TIER1_PATH + "/bx/include/compat/mingw",
-        "-I", LIBS_TIER1_PATH + "/bx/3rdparty",
-        "-I", LIBS_TIER1_PATH + "/bgfx/include",
-        "-I", LIBS_TIER1_PATH,      // this is an include error of fontstash.h: #include <stb/stb_truetype.h>
-        "-I", LIBS_TIER1_PATH + "/nanosvg/src"
+        DIR + "/nanovg",
+        LIBS_TIER1_PATH + "/stb",
+        LIBS_TIER1_PATH + "/bx/include",
+        LIBS_TIER1_PATH + "/bx/include/compat/mingw",
+        LIBS_TIER1_PATH + "/bx/3rdparty",
+        LIBS_TIER1_PATH + "/bgfx/include",
+        LIBS_TIER1_PATH,      // this is an include error of fontstash.h: #include <stb/stb_truetype.h>
+        LIBS_TIER1_PATH + "/nanosvg/src"
     ];
-    var DPARAMS = ["-D",PLATFORM_STANDARD, "-D","BX_PLATFORM_WINDOWS", "-D", "_CRT_SECURE_NO_WARNINGS"];
+    var DPARAMS = [PLATFORM_STANDARD, "BX_PLATFORM_WINDOWS",  "_CRT_SECURE_NO_WARNINGS"];
 
     AMALGAMATED_SOURCES.push(SOURCES);
     AMALGAMATED_DPARAMS.push(DPARAMS);

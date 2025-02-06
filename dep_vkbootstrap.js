@@ -10,10 +10,10 @@ function vkbootstrap() {
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D", PLATFORM_STANDARD
+        PLATFORM_STANDARD
     ];
     var INCLUDES = [
-        "-I", DIR + "/src"
+        DIR + "/src"
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".cpp", true, false);
 

@@ -9,10 +9,10 @@ function openfbx() {
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM,
+        PLATFORM,
     ];
     var INCLUDES = [
-        "-I",INSTALL_LIB_DIR + "/src",
+        INSTALL_LIB_DIR + "/src",
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".c", true, false);
 

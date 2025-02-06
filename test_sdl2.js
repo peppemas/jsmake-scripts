@@ -29,7 +29,7 @@ function compile_test(name)
 
     var SOURCE = "./src/test/"+name+".cpp";
     var OUTPUT = "./build/"+name;
-    var DPARAMS = arrayToString(["-D", PLATFORM]);
+    var DPARAMS = [PLATFORM];
     var LDLIBS = arrayToString([
         "-L",TARGET_PATH_DIR,
         "-l","victrix",

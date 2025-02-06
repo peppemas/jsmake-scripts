@@ -11,10 +11,10 @@ function libogg()
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM
+        PLATFORM
     ];
     var INCLUDES = [
-        "-I",DIR+"/include"
+        DIR+"/include"
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/src", ".c", true, false);
 

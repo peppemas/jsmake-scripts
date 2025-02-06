@@ -9,10 +9,10 @@ function microprofile()
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
-    var DPARAMS = arrayToString(["-D",PLATFORM]);
-    var INCLUDES = arrayToString([
-        "-I",DIR,
-    ]);
+    var DPARAMS = [PLATFORM];
+    var INCLUDES = [
+        DIR,
+    ];
     var SOURCES = [];
 
     AMALGAMATED_INCLUDES.push(INCLUDES);

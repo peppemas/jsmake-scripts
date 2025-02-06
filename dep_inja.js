@@ -13,7 +13,7 @@ function inja() {
     var SOURCES = [];
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR + "/include/single-include"
+        DIR + "/include/single-include"
     ];
 
     AMALGAMATED_SOURCES.push(SOURCES);

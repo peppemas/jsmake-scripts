@@ -9,11 +9,11 @@ function jsoncpp()
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
-    var DPARAMS = ["-D",PLATFORM];
+    var DPARAMS = [PLATFORM];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/src/lib_json", ".cpp", true, false);
     var INCLUDES = [
-        "-I", DIR + "/include",
-        "-I", DIR + "/src/lib_json/"
+        DIR + "/include",
+        DIR + "/src/lib_json/"
     ];
 
     AMALGAMATED_SOURCES.push(SOURCES);

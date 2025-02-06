@@ -9,16 +9,16 @@ function quickjs()
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
-    var INCLUDES = arrayToString([
-        "-I", DIR
-    ]);
-    var DPARAMS = arrayToString([
-        "-D",PLATFORM,
-        "-D","_GNU_SOURCE",
-        "-D","CONFIG_VERSION=\"12345\"",
-        "-D","CONFIG_BIGNUM",
-        "-D","CONFIG_CHECK_JSVALUE"
-    ]);
+    var INCLUDES = [
+        DIR
+    ];
+    var DPARAMS = [
+        PLATFORM,
+        "_GNU_SOURCE",
+        "CONFIG_VERSION=\"12345\"",
+        "CONFIG_BIGNUM",
+        "CONFIG_CHECK_JSVALUE"
+    ];
     var CFLAGS = "-g -Wall -MMD -Wno-array-bounds -Wno-format-truncation";
 
     var SOURCES = [

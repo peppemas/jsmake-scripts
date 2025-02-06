@@ -9,10 +9,10 @@ function lohmann_json() {
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D",PLATFORM,
+        PLATFORM,
     ];
     var INCLUDES = [
-        "-I", DIR + "/single_include",
+        DIR + "/single_include",
     ];
     var SOURCES = [];
 

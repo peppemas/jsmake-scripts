@@ -12,18 +12,18 @@ function bx() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR + "/include",
-        "-I", DIR + "/bx/include/compat/mingw",
-        "-I", DIR + "/3rdparty"
+        DIR + "/include",
+        DIR + "/bx/include/compat/mingw",
+        DIR + "/3rdparty"
     ];
 
     if (TARGET_PLATFORM === T_TARGET_PLATFORM.WINDOWS) {
         INCLUDES = INCLUDES.concat([
-            "-I", DIR + "/include/compat/mingw"
+            DIR + "/include/compat/mingw"
         ]);
         DPARAMS = DPARAMS.concat([
-            "-D","BX_PLATFORM_WINDOWS",
-            "-D","BX_CONFIG_DEBUG"
+            "BX_PLATFORM_WINDOWS",
+            "BX_CONFIG_DEBUG"
         ])
     } else {
         Log.error("TARGET PLATFORM compilation not yet implemented.");

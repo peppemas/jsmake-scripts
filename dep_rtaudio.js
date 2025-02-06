@@ -14,10 +14,10 @@ function rtaudio() {
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
-    var DPARAMS = ["-D","__WINDOWS_WASAPI__"];
+    var DPARAMS = ["__WINDOWS_WASAPI__"];
     var INCLUDES = [
-        "-I", DIR,
-        "-I", DIR + "/include"
+        DIR,
+        DIR + "/include"
     ];
 
     var SOURCES = [ DIR + "/RtAudio.cpp" ];

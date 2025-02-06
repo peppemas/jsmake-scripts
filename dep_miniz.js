@@ -12,7 +12,7 @@ function miniz() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR
+        DIR
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR, ".c", false, false);
 

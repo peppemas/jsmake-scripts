@@ -13,10 +13,10 @@ function miniaudio() {
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
-    var DPARAMS = ["-D", "STB_VORBIS_NO_STDIO", "-D", "MA_SUPPORT_WASAPI"];
+    var DPARAMS = ["STB_VORBIS_NO_STDIO", "MA_SUPPORT_WASAPI"];
     var INCLUDES = [
-        "-I", DIR + "/extras/miniaudio_split",
-        "-I", DIR + "/extras"
+        DIR + "/extras/miniaudio_split",
+        DIR + "/extras"
     ];
 
     var SOURCES = Directory.collectFilesWithExt(DIR + "/extras/miniaudio_split", ".c", false, false);

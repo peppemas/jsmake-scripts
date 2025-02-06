@@ -11,29 +11,29 @@ function bgfx() {
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
     var DPARAMS = [
-        "-D","BGFX_CONFIG_RENDERER_DIRECT3D12=1",
-        //"-D","BGFX_CONFIG_RENDERER_DIRECT3D11=1",
-        //"-D","BGFX_CONFIG_RENDERER_DIRECT3D9=1",
-        //"-D","BGFX_CONFIG_RENDERER_WEBGPU=1",
-        "-D","BGFX_CONFIG_RENDERER_VULKAN=1",
-        "-D","BGFX_CONFIG_RENDERER_OPENGL=1",
+        "BGFX_CONFIG_RENDERER_DIRECT3D12=1",
+        //"BGFX_CONFIG_RENDERER_DIRECT3D11=1",
+        //"BGFX_CONFIG_RENDERER_DIRECT3D9=1",
+        //"BGFX_CONFIG_RENDERER_WEBGPU=1",
+        "BGFX_CONFIG_RENDERER_VULKAN=1",
+        "BGFX_CONFIG_RENDERER_OPENGL=1",
     ];
     var INCLUDES = [
-        "-I", DIR + "/include",
-        "-I", DIR + "/3rdparty",
-        "-I", DIR + "/3rdparty/dxsdk/include",
-        "-I", DIR + "/3rdparty/khronos",
-        "-I", INSTALL_LIB_DIR + "/bimg/include",
-        "-I", INSTALL_LIB_DIR + "/bx/include"
+        DIR + "/include",
+        DIR + "/3rdparty",
+        DIR + "/3rdparty/dxsdk/include",
+        DIR + "/3rdparty/khronos",
+        INSTALL_LIB_DIR + "/bimg/include",
+        INSTALL_LIB_DIR + "/bx/include"
     ];
 
     if (TARGET_PLATFORM === T_TARGET_PLATFORM.WINDOWS) {
         INCLUDES = INCLUDES.concat([
-            "-I", INSTALL_LIB_DIR + "/bx/include/compat/mingw"
+            INSTALL_LIB_DIR + "/bx/include/compat/mingw"
         ]);
         DPARAMS = DPARAMS.concat([
-            "-D", "BX_PLATFORM_WINDOWS",
-            "-D", "BGFX_CONFIG_RENDERER_OPENGL=44" //if you want to use OpenGL 4.4
+            "BX_PLATFORM_WINDOWS",
+            "BGFX_CONFIG_RENDERER_OPENGL=44" //if you want to use OpenGL 4.4
         ]);
     } else {
         Log.error("TARGET PLATFORM compilation not yet implemented.");
@@ -42,13 +42,13 @@ function bgfx() {
 
     if (TARGET_BUILD === T_TARGET_BUILD.DEBUG) {
         DPARAMS = DPARAMS.concat([
-            "-D", "BGFX_CONFIG_PROFILER",
-            "-D", "BX_CONFIG_DEBUG=0",
-            "-D", "PRIx64=\"I64x\""
+            "BGFX_CONFIG_PROFILER",
+            "BX_CONFIG_DEBUG=0",
+            "PRIx64=\"I64x\""
         ]);
     } else {
         DPARAMS = DPARAMS.concat([
-            "-D", "BX_CONFIG_DEBUG=0",
+            "BX_CONFIG_DEBUG=0",
         ]);
     }
 
@@ -68,7 +68,7 @@ function bgfx_shaderc()
 {
     banner("Compile SHADERC");
     
-    var DPARAMS = arrayToString(["-D", PLATFORM, "-D", "BX_CONFIG_DEBUG"]);
+    var DPARAMS = [PLATFORM, "BX_CONFIG_DEBUG"];
     var LDLIBS = arrayToString([
         "-L",TARGET_PATH_DIR,
         "-l","victrix",
@@ -88,7 +88,7 @@ function bgfx_shaderc()
     var DIR = INSTALL_LIB_DIR + "/bgfx";
     var SOURCES = Directory.collectFilesWithExt(DIR + "/tools/shaderc", ".cpp", false, false);
     var INCLUDES = [
-        "-I", DIR + "/tools/shaderc"
+        DIR + "/tools/shaderc"
     ];
     AMALGAMATED_INCLUDES.push(INCLUDES);
 

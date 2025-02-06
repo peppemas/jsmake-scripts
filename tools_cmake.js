@@ -6,6 +6,16 @@
  *
  ***************************************************/
 
+function removeDuplicates(arr) {
+    var unique = [];
+    for (var i=0; i<arr.length; i++) {
+        if (unique.indexOf(arr[i]) === -1) {
+            unique.push(arr[i]);
+        }
+    }
+    return unique;
+}
+
 function generateCMakeLists(
     filename,
     projectName,
@@ -24,11 +34,11 @@ function generateCMakeLists(
         "creation_date": Date(),
         "release": TARGET_BUILD === T_TARGET_BUILD.RELEASE,
         "static_library": isStaticLibrary,
-        "array_subdirs": arrSubdirs,
-        "array_headers": arrHeaders,
-        "array_sources": arrSources,
-        "cflags": cflags,
-        "dparams": arrayToString(arrDparams)
+        "array_subdirs": removeDuplicates(arrSubdirs),
+        "array_headers": removeDuplicates(arrHeaders),
+        "array_sources": removeDuplicates(arrSources),
+        "array_dparams": removeDuplicates(arrDparams),
+        "cflags": cflags
     };
 
     if (Directory.exists(TEMPLATE_DIR + "/static_library.template")) {
@@ -58,11 +68,11 @@ function generateCMakeToolChain(
         "creation_date": Date(),
         "release": TARGET_BUILD === T_TARGET_BUILD.RELEASE,
         "static_library": isStaticLibrary,
-        "array_subdirs": arrSubdirs,
-        "array_headers": arrHeaders,
-        "array_sources": arrSources,
-        "cflags": cflags,
-        "dparams": arrayToString(arrDparams)
+        "array_subdirs": removeDuplicates(arrSubdirs),
+        "array_headers": removeDuplicates(arrHeaders),
+        "array_sources": removeDuplicates(arrSources),
+        "array_dparams": removeDuplicates(arrDparams),
+        "cflags": cflags
     };
 
     var TEMPLATE_DIR = "./jsmake-scripts/cmake_templates";

@@ -12,7 +12,7 @@ function fontstash() {
     var SOURCES = [];
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR + "/src"
+        DIR + "/src"
     ];
 
     AMALGAMATED_SOURCES.push(SOURCES);

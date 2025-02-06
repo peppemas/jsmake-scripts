@@ -9,14 +9,14 @@ function minitrace()
 
     GitCloneIfNotExists(GITHUB_URL, VERSION, DIR);
 
-    var DPARAMS = ["-D",PLATFORM];
+    var DPARAMS = [PLATFORM];
     var INCLUDES = [
-        "-I", DIR,
+        DIR,
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR, ".c", true, false);
 
     if (TARGET_BUILD === T_TARGET_BUILD.DEBUG) {
-        DPARAMS = DPARAMS.concat(["-D","MTR_ENABLED"]);
+        DPARAMS = DPARAMS.concat(["MTR_ENABLED"]);
     }
 
     AMALGAMATED_SOURCES.push(SOURCES);

@@ -11,7 +11,7 @@ function gainput() {
 
     var DPARAMS = [];
     var INCLUDES = [
-        "-I", DIR + "/lib/include"
+        DIR + "/lib/include"
     ];
     var SOURCES = Directory.collectFilesWithExt(DIR + "/lib/source/", ".cpp", true, false);
 
