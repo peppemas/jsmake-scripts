@@ -4,7 +4,8 @@ function sdl3()
     Log.warn("### Compile SDL3");
 
     var GITHUB_URL = "https://github.com/libsdl-org/SDL.git";
-    var VERSION = "release-3.2.0";
+    //var VERSION = "release-3.2.0";
+    var VERSION = "release-3.2.4";
 
     var DIR = INSTALL_LIB_DIR + "/sdl3";
 
@@ -16,7 +17,14 @@ function sdl3()
             "SDL_MAIN_HANDLED",    // we manage ourself window handle
             "NDEBUG",
             "_MBCS",
-            "HAVE_SHELLSCALINGAPI_H"
+            "HAVE_SHELLSCALINGAPI_H",
+            "SDL_VIDEO",
+            "SDL_STATIC",
+            "SDL_STATIC_DEFAULT",
+            "SDL_STATIC_AVAILABLE=0",
+            "SDL_SHARED_DEFAULT=0",
+            "SDL_SHARED_AVAILABLE=0",
+            "SDL_PLATFORM_WINDOWS",
         ];
 
     // common for all platforms
@@ -27,7 +35,9 @@ function sdl3()
     var SOURCES_CPU = Directory.collectFilesWithExt(DIR+"/src/cpuinfo",".c",false,false);
     var SOURCES_DYNAPI = Directory.collectFilesWithExt(DIR+"/src/dynapi",".c",false,false);
     var SOURCES_EVENTS = Directory.collectFilesWithExt(DIR+"/src/events",".c",false,false);
-    var SOURCES_FILE = Directory.collectFilesWithExt(DIR+"/src/file",".c",false,false);
+    var SOURCES_CORE = Directory.collectFilesWithExt(DIR+"/src/core",".c",false,false);
+    var SOURCES_IO = Directory.collectFilesWithExt(DIR+"/src/io",".c",false,false);
+    var SOURCES_TRAY = Directory.collectFilesWithExt(DIR+"/src/tray",".c",false,false);
     var SOURCES_FILESYSTEM = Directory.collectFilesWithExt(DIR+"/src/filesystem",".c",false,false);
     var SOURCES_HAPTIC = Directory.collectFilesWithExt(DIR+"/src/haptic",".c",false,false);
     var SOURCES_HIDAPI = Directory.collectFilesWithExt(DIR+"/src/hidapi",".c",false,false);
@@ -61,7 +71,9 @@ function sdl3()
             SOURCES_AUDIO_DRV = SOURCES_AUDIO_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/audio/dummy",".c",false,false));
             SOURCES_AUDIO_DRV = SOURCES_AUDIO_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/audio/disk",".c",false,false));
 
+            var SOURCES_IO_DRV = Directory.collectFilesWithExt(DIR+"/src/io/generic",".c",false,false);
             var SOURCES_CORE_DRV = Directory.collectFilesWithExt(DIR+"/src/core/windows",".c",false,false);
+            var SOURCES_TRAY_DRV = Directory.collectFilesWithExt(DIR+"/src/tray/windows",".c",false,false);
             var SOURCES_FILESYSTEM_DRV = Directory.collectFilesWithExt(DIR+"/src/filesystem/windows",".c",false,false);
             var SOURCES_HAPTIC_DRV = Directory.collectFilesWithExt(DIR+"/src/haptic/windows",".c",false,false);
             var SOURCES_HIDAPI_DRV = Directory.collectFilesWithExt(DIR+"/src/hidapi/windows",".c",false,false);
@@ -80,7 +92,7 @@ function sdl3()
             SOURCES_RENDER_DRV = SOURCES_RENDER_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/render/gpu",".c",false,false));
 
             var SOURCES_GPU_DRV = [];
-            SOURCES_GPU_DRV = SOURCES_GPU_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/gpu/d3d11",".c",false,false));
+            //SOURCES_GPU_DRV = SOURCES_GPU_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/gpu/d3d11",".c",false,false));
             SOURCES_GPU_DRV = SOURCES_GPU_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/gpu/d3d12",".c",false,false));
             SOURCES_GPU_DRV = SOURCES_GPU_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/gpu/vulkan",".c",false,false));
 
@@ -109,11 +121,14 @@ function sdl3()
             var SOURCES_DIALOG_DRV = [];
             SOURCES_DIALOG_DRV = SOURCES_DIALOG_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/dialog/windows",".c",false,false));
 
+            var SOURCES_MAIN_DRV = [];
+            SOURCES_MAIN_DRV = SOURCES_MAIN_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/main/generic",".c",false,false));
+            SOURCES_MAIN_DRV = SOURCES_MAIN_DRV.concat(Directory.collectFilesWithExt(DIR+"/src/main/windows",".c",false,false));
+
             var SOURCES_TIMER_DRV = Directory.collectFilesWithExt(DIR+"/src/timer/windows",".c",false,false);
             var SOURCES_LOADSO_DRV = Directory.collectFilesWithExt(DIR+"/src/loadso/windows",".c",false,false);
             var SOURCES_MISC_DRV = Directory.collectFilesWithExt(DIR+"/src/misc/windows",".c",false,false);
             var SOURCES_LOCALE_DRV = Directory.collectFilesWithExt(DIR+"/src/locale/windows",".c",false,false);
-            var SOURCES_MAIN_DRV = Directory.collectFilesWithExt(DIR+"/src/main/windows",".c",false,false);
             var SOURCES_TIME_DRV = Directory.collectFilesWithExt(DIR+"/src/time/windows",".c",false,false);
 
             DPARAMS.push("__WIN32__");
@@ -121,6 +136,10 @@ function sdl3()
             DPARAMS.push("SDL_CAMERA_DRIVER_MEDIAFOUNDATION");
             if (TARGET_RENDERER === T_TARGET_RENDERER.OPENGL) {
                 DPARAMS.push("SDL_VIDEO_RENDER_OGL");
+                DPARAMS.push("SDL_VIDEO_OPENGL");
+            } else if (TARGET_RENDERER === T_TARGET_RENDERER.VULKAN) {
+                DPARAMS.push("SDL_VIDEO_RENDER_VULKAN");
+                DPARAMS.push("SDL_VIDEO_VULKAN");
             } else if (TARGET_RENDERER === T_TARGET_RENDERER.DIRECTX) {
                 DPARAMS.push("SDL_VIDEO_RENDER_D3D11");
             }
@@ -146,7 +165,9 @@ function sdl3()
         SOURCES_CPU,
         SOURCES_DYNAPI,
         SOURCES_EVENTS,
-        SOURCES_FILE,
+        SOURCES_CORE,
+        SOURCES_IO,
+        SOURCES_TRAY,
         SOURCES_FILESYSTEM,
         SOURCES_LIBM,
         SOURCES_RENDER,
@@ -176,6 +197,8 @@ function sdl3()
         SOURCES_VIDEO_DRV,
         SOURCES_CAMERA_DRV,
         SOURCES_CORE_DRV,
+        SOURCES_IO_DRV,
+        SOURCES_TRAY_DRV,
         SOURCES_THREAD_DRV,
         SOURCES_FILESYSTEM_DRV,
         SOURCES_HAPTIC_DRV,
